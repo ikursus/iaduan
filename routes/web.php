@@ -40,3 +40,7 @@ Route::get('/aduan', function () {
 Route::get('/aduan/baru', function () {
     return view('pengguna.aduan.template-aduan-baru');
 });
+
+Route::get('/logout', function () {
+    return redirect('/login');
+});
