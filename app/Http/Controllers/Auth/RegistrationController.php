@@ -13,4 +13,9 @@ class RegistrationController extends Controller
         return view('authentication.template-register');
 
     }
+
+    public function simpanDataPendaftaran(Request $request)
+    {
+        dd($request->all());
+    }
 }
