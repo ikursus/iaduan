@@ -16,6 +16,6 @@ class RegistrationController extends Controller
 
     public function simpanDataPendaftaran(Request $request)
     {
-        dd($request->all());
+
     }
 }

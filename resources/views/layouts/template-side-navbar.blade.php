@@ -2,7 +2,7 @@
     <div class="sb-sidenav-menu">
         <div class="nav">
             <div class="sb-sidenav-menu-heading">MENU PENGGUNA</div>
-            <a class="nav-link" href="/dashboard">
+            <a class="nav-link" href="{{ route('name.dashboard') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Dashboard
             </a>
@@ -14,17 +14,17 @@
             </a>
             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="/aduan">Senarai Aduan</a>
-                    <a class="nav-link" href="/aduan/baru">Aduan Baru</a>
+                    <a class="nav-link" href="{{ route('name.aduan.index') }}">Senarai Aduan</a>
+                    <a class="nav-link" href="{{ route('name.aduan.create') }}">Aduan Baru</a>
                 </nav>
             </div>
 
             <div class="sb-sidenav-menu-heading">Akaun</div>
-            <a class="nav-link" href="/profile">
+            <a class="nav-link" href="{{ route('name.profile.edit') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                 Profile
             </a>
-            <a class="nav-link" href="/logout">
+            <a class="nav-link" href="{{ route('name.logout') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Logout
             </a>
