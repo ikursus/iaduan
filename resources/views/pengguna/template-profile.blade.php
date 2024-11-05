@@ -28,22 +28,47 @@
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <input type="text" name="name" class="form-control" placeholder="Nama Anda">
+                                <input
+                                type="text"
+                                name="name"
+                                class="form-control @error('name') is-invalid @enderror"
+                                placeholder="Nama Anda"
+                                value="{{ old('name') }}">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <input type="email" name="email" class="form-control" placeholder="Email Anda">
+                                <input
+                                type="email"
+                                name="email"
+                                class="form-control @error('email') is-invalid @enderror"
+                                placeholder="Email Anda"
+                                value="{{ old('email') }}">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <input type="password" name="password" class="form-control" placeholder="Password Anda">
+                                <input
+                                type="password"
+                                name="password"
+                                class="form-control @error('password') is-invalid @enderror"
+                                placeholder="Password Anda">
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6">
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="Ulang Password Anda">
+                                <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" placeholder="Ulang Password Anda">
                             </div>
                         </div>
 

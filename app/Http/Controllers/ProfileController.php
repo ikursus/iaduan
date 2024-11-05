@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $data = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'password' => ['required', 'min:3'],
+            'password' => ['required', 'min:3', 'confirmed'],
         ]);
 
         dd($data);

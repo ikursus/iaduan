@@ -28,25 +28,28 @@
                             <div class="col-12">
                                 <select name="jenis" class="form-select">
                                     <option value="">--- Pilih Jenis Aduan ---</option>
+                                    @foreach ($senaraiJenisAduan as $key => $value)
+                                        <option value="{{ $key }}" {{ old('jenis') == $key ? 'selected' : NULL }}>{{ $value }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <input type="text" name="tajuk" class="form-control" placeholder="Tajuk Aduan">
+                                <input type="text" name="tajuk" class="form-control" placeholder="Tajuk Aduan" value="{{ old('tajuk') }}">
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <textarea name="kandungan" class="form-control" placeholder="Butiran Aduan"></textarea>
+                                <textarea name="kandungan" class="form-control" placeholder="Butiran Aduan">{{ old('kandungan') }}</textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <input type="file" name="lampiran" class="form-control">
+                                <input type="file" name="lampiran" class="form-control" value="{{ old('lampiran') }}">
                             </div>
                         </div>
 

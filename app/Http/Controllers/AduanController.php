@@ -42,7 +42,15 @@ class AduanController extends Controller
      */
     public function create()
     {
-        return view('pengguna.aduan.template-aduan-baru');
+        $senaraiJenisAduan = [
+            'pokok' => 'Pokok',
+            'sampah' => 'Sampah',
+            'jalan' => 'Jalan',
+            'bangunan' => 'Bangunan',
+            'lain' => 'Lain-lain',
+        ];
+
+        return view('pengguna.aduan.template-aduan-baru', compact('senaraiJenisAduan'));
     }
 
     /**
