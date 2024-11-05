@@ -17,6 +17,7 @@ Route::get('/', [HomeController::class, 'welcome'])->name('name.home');
 Route::get('/login', [LoginController::class, 'paparBorangLogin'])->name('login');
 // Terima data daripada borang login dan authenticate user
 Route::post('/login', [LoginController::class, 'authenticate'])->name('name.login.authenticate');
+
 // Log keluar
 Route::get('/logout', [LoginController::class, 'logout'])->name('name.logout');
 
