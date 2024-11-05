@@ -50,7 +50,13 @@ class AduanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'tajuk' => 'required',
+            'kandungan' => 'required',
+            'lampiran' => ['nullable', 'sometimes', 'file', 'mimes:pdf,docx,doc,png,jpg,jpeg', 'max:2048'],
+        ]);
+
+        dd($data);
     }
 
     /**
