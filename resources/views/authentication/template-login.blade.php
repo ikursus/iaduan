@@ -39,8 +39,8 @@
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="password.html">Forgot Password?</a>
-                                                <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+                                                <a class="small" href="#">Forgot Password?</a>
+                                                <a class="btn btn-primary" href="{{ route('name.dashboard') }}">Login</a>
                                             </div>
                                         </form>
                                     </div>
@@ -57,7 +57,7 @@
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">Copyright &copy; Your Website {{ date('Y') }}</div>
                             <div>
                                 <a href="#">Privacy Policy</a>
                                 &middot;
