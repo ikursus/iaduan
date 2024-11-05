@@ -1,35 +1,28 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegistrationController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 // Halaman utama
-Route::get('/', function () {
-
-    return view('welcome'); // resources/view/welcome.php atau welcome.blade.php
-
-});
+// Format route Route::get('uri', 'action');
+Route::get('/', [HomeController::class, 'welcome']);
 
 // Halaman login
-Route::get('/login', function () {
-
-    return view('authentication.template-login');
-
-});
+// Route yang memanggil controller bersama nama method, haruslah ditulis dalam format array untuk actionnya
+Route::get('/login', [LoginController::class, 'paparBorangLogin']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 // Halaman register
-Route::get('/register', function () {
+Route::get('/register', [RegistrationController::class, 'paparBorangRegister']);
 
-    return view('authentication.template-register');
+// Routing halaman dashboard menggunakan invokable method (single action controller)
+// Route yang memanggil single action controller, hanya perlu tulis tanpa array dan tanpa nama method untuk actionnya
+Route::get('/dashboard', DashboardController::class);
 
-});
 
-
-// Routing halaman pengguna
-Route::get('/dashboard', function () {
-
-    return view('pengguna.template-dashboard');
-
-});
 
 Route::get('/profile', function () {
     return view('pengguna.template-profile');
@@ -66,8 +59,4 @@ Route::get('/aduan', function () {
 
 Route::get('/aduan/baru', function () {
     return view('pengguna.aduan.template-aduan-baru');
-});
-
-Route::get('/logout', function () {
-    return redirect('/login');
 });

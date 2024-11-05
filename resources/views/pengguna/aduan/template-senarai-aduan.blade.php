@@ -29,7 +29,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($senaraiAduan as $aduan)
+                        @foreach ($senaraiAduan AS $aduan)
                             <tr>
                                 <td>{{ $aduan['id'] }}</td>
                                 <td>{{ $aduan['tajuk'] }}</td>
