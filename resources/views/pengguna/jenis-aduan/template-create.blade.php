@@ -26,7 +26,12 @@
 
                         <div class="row mb-3">
                             <div class="col-12">
-                                <input type="text" name="nama" class="form-control" placeholder="Nama Jenis Aduan" value="{{ old('nama') }}">
+                                <input
+                                type="text"
+                                name="nama"
+                                class="form-control"
+                                placeholder="Nama Jenis Aduan"
+                                value="{{ old('nama') }}">
                             </div>
                         </div>
 
