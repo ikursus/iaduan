@@ -33,7 +33,7 @@
                                 name="name"
                                 class="form-control @error('name') is-invalid @enderror"
                                 placeholder="Nama Anda"
-                                value="{{ old('name') }}">
+                                value="{{ old('name') ?? auth()->user()->name }}">
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
@@ -43,14 +43,26 @@
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col-12">
+                            <div class="col-md-6">
                                 <input
                                 type="email"
                                 name="email"
                                 class="form-control @error('email') is-invalid @enderror"
                                 placeholder="Email Anda"
-                                value="{{ old('email') }}">
+                                value="{{ old('email') ?? auth()->user()->email }}">
                                 @error('email')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-6">
+                                <input
+                                type="text"
+                                name="phone"
+                                class="form-control @error('phone') is-invalid @enderror"
+                                placeholder="Telefon Anda"
+                                value="{{ old('phone') ?? auth()->user()->phone }}">
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -66,6 +78,7 @@
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">{{ $message }}</span>
                                 @enderror
+                                <span class="text-muted">Biarkan kosong jika tidak ingin mengubah password</span>
                             </div>
                             <div class="col-md-6">
                                 <input type="password" name="password_confirmation" class="form-control @error('password') is-invalid @enderror" placeholder="Ulang Password Anda">
