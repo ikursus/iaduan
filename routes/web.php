@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AduanController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegistrationController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AduanController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\JenisAduanController;
+use App\Http\Controllers\Auth\RegistrationController;
 
 // Halaman utama
 // Format route Route::get('uri', 'action');
@@ -71,5 +72,6 @@ Route::group([
 
     // Resource Controller
     // Route::resource('aduan', AduanController::class);
+    Route::resource('/jenis-aduan', JenisAduanController::class);
 
 });

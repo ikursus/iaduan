@@ -19,6 +19,18 @@
                 </nav>
             </div>
 
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseJenisAduan" aria-expanded="false" aria-controls="collapseJenisAduan">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Jenis Aduan
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseJenisAduan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="{{ route('jenis-aduan.index') }}">Senarai Jenis Aduan</a>
+                    <a class="nav-link" href="{{ route('jenis-aduan.create') }}">Jenis Aduan Baru</a>
+                </nav>
+            </div>
+
             <div class="sb-sidenav-menu-heading">Akaun</div>
             <a class="nav-link" href="{{ route('name.profile.edit') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
