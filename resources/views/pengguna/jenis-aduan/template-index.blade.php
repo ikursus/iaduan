@@ -17,27 +17,41 @@
                 </div>
                 <div class="card-body">
 
+                    @include('layouts.template-alerts')
+
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">BIL</th>
                             <th scope="col">NAMA</th>
-                            <th scope="col">Tindakan</th>
+                            <th scope="col">TINDAKAN</th>
                         </tr>
                         </thead>
                         <tbody>
-
+                            @foreach ($senaraiJenisAduan AS $jenisAduan)
                             <tr>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $jenisAduan->nama }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+
+                                    <form method="POST" action="{{ route('jenis-aduan.destroy', $jenisAduan->id) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('jenis-aduan.edit', $jenisAduan->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                        <button
+                                            class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Anda pasti nak delete {{ $jenisAduan->nama }}?')">
+                                            Delete
+                                        </button>
+                                    </form>
+
                                 </td>
                             </tr>
-
+                            @endforeach
                         </tbody>
                     </table>
+
+                    {{ $senaraiJenisAduan->links() }}
 
                 </div>
             </div>

@@ -12,7 +12,11 @@ class JenisAduanController extends Controller
      */
     public function index()
     {
-        return view('pengguna.jenis-aduan.template-index');
+
+        // Tarik data daripada table jenis_aduan
+        $senaraiJenisAduan = DB::table('jenis_aduan')->paginate(5); // SELECT * FROM jenis_aduan
+
+        return view('pengguna.jenis-aduan.template-index', compact('senaraiJenisAduan'));
     }
 
     /**
@@ -50,7 +54,10 @@ class JenisAduanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // SELECT * FROM jenis_aduan WHERE id = $id LIMIT 1
+        $jenisAduan = DB::table('jenis_aduan')->where('id', '=', $id)->first();
+
+        return view('pengguna.jenis-aduan.template-edit', compact('jenisAduan'));
     }
 
     /**
@@ -58,7 +65,14 @@ class JenisAduanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'nama' => 'required',
+        ]);
+
+        // Kemaskini rekod berdasarkan ID
+        DB::table('jenis_aduan')->where('id', '=', $id)->update($data);
+
+        return redirect()->route('jenis-aduan.index')->with('mesej-sukses', 'Rekod berjaya dikemaskini');
     }
 
     /**
@@ -66,6 +80,8 @@ class JenisAduanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('jenis_aduan')->where('id', '=', $id)->delete();
+
+        return redirect()->route('jenis-aduan.index')->with('mesej-sukses', 'Rekod berjaya dihapuskan');
     }
 }
