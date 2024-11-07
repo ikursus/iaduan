@@ -19,6 +19,7 @@
                 </nav>
             </div>
 
+            @role('role_admin')
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseJenisAduan" aria-expanded="false" aria-controls="collapseJenisAduan">
                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                 Jenis Aduan
@@ -30,6 +31,7 @@
                     <a class="nav-link" href="{{ route('jenis-aduan.create') }}">Jenis Aduan Baru</a>
                 </nav>
             </div>
+            @endrole
 
             <div class="sb-sidenav-menu-heading">Akaun</div>
             <a class="nav-link" href="{{ route('name.profile.edit') }}">

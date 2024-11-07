@@ -43,7 +43,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('name.logout')->
 // Cara 2 tulis Route Group
 // Route::group(['middleware' => 'auth'], function () {});
 Route::group([
-    'middleware' => 'auth',
+    'middleware' => ['auth'],
+    // 'middleware' => ['auth', 'role:role_admin'],
     // 'prefix' => 'dashboard',
     // 'as' => 'name.',
 ], function () {
@@ -69,9 +70,11 @@ Route::group([
     Route::patch('/aduan/{id}/edit', [AduanController::class, 'update'])->name('name.aduan.update');
     // Route untuk hapus data daripada table aduan
     Route::delete('/aduan/{id}', [AduanController::class, 'destroy'])->name('name.aduan.destroy');
+    // Route untuk akses download
+    Route::get('/aduan/{id}/download', [AduanController::class, 'download'])->name('name.aduan.download');
 
     // Resource Controller
     // Route::resource('aduan', AduanController::class);
-    Route::resource('/jenis-aduan', JenisAduanController::class);
+    Route::resource('/jenis-aduan', JenisAduanController::class)->middleware(['role:role_admin']);
 
 });

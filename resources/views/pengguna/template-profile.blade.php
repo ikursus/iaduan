@@ -85,6 +85,21 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+
+                                <select name="role" class="form-control @error('role') is-invalid @enderror">
+                                    @foreach ($senaraiRole as $role)
+                                    <option value="{{ $role->name }}" {{ (old('role') ?? auth()->user()->getRoleNames()->first() ) == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                <span class="invalid-feedback" role="alert">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                        </div>
+
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

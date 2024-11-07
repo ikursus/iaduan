@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 
 class ProfileController extends Controller
 {
@@ -12,7 +14,10 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('pengguna.template-profile');
+        // Tarik data role
+        $senaraiRole = Role::select('name')->get();
+
+        return view('pengguna.template-profile', compact('senaraiRole'));
     }
 
     /**
@@ -26,6 +31,7 @@ class ProfileController extends Controller
             'email' => 'required|email',
             'phone' => 'nullable|sometimes|digits_between:10,13',
             // 'password' => ['required', 'min:3', 'confirmed'],
+            // 'role' => 'required',
         ]);
 
         // Semak jika ruang password diisi
@@ -45,6 +51,11 @@ class ProfileController extends Controller
         DB::table('users')
         ->where('id', auth()->id()) // ->where('id', auth()->user()->id)
         ->update($data);
+
+        // Dapatkan rekod user menerusi Model
+        $user = User::find(auth()->id());
+        // Update role akaun user ini.
+        $user->syncRoles($request->input('role'));
 
         // Jika tiada sebarang masalah dengan proses kemaskini data, maka
         // redirect ke halaman edit profile bersama flash message sukses
